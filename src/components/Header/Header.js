@@ -1,5 +1,9 @@
 import React from "react";
+import styled from "styled-components";
 import { Row, Col } from "react-materialize";
+import "./style.css";
+
+
 
 
 
@@ -7,7 +11,7 @@ function Header(props) {
     return (
         <div>
             <Row>
-                <Col xl={12} >
+                <Col xl={12} className="headCard">
                     {/* <img src={props.image} /> */}
                     <div className="container">
                         <h1>Memory Click Game</h1>
