@@ -12,7 +12,10 @@ class App extends Component {
 
   state = {
     images,
-    score: 0
+    score: 0,
+    topScore: 0,
+    clickedId: [],
+    guess: "Click an image to begin"
   };
 
   randomizeCards = () => {
@@ -30,14 +33,34 @@ class App extends Component {
     this.setState({images:input});
   }
 
-  renderScore = () => {
-    
+  saveId = (id) => {
+    // let newClickArray = {...this.state.clickedId + this.image.id}
+    this.setState({clickedId: [...this.state.clickedId, id]})
+    console.log("clickedId array:", this.state.clickedId)
+  }
+
+
+
+  renderScore = (id) => {
+    this.randomizeCards()
+
+    if(this.state.clickedId.includes(id)) {
+      this.setState({guess: "You guessed incorrectly!"})
+      this.setState({score: 0})
+      this.setState({clickedId: []})
+    } else {
+      this.saveId(id)
+      this.setState({guess: "You guessed correctly!"})
+      this.setState({score: this.state.score + 1})
+      this.setState({topScore: (this.state.topScore > this.state.score ? this.state.topScore : this.state.score + 1)})
+
+    }
   }
 
   render() {
     return (
       <div >
-      <Nav fixed={true}></Nav>
+      <Nav fixed={true} score={this.state.score} topScore={this.state.topScore}guess={this.state.guess}></Nav>
       <Header image={pinkRice}>
       </Header>
       <Row>
@@ -46,8 +69,11 @@ class App extends Component {
           this.state.images.map(image => (
             <ClickCard
               id={image.id}
+              key={image.id}
               image={image.image}
               randomizeCards={this.randomizeCards}
+              renderScore={this.renderScore}
+              
             />
           ))
           

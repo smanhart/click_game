@@ -1,13 +1,27 @@
 import React from "react";
-import {Navbar, NavItem} from "react-materialize";
+import {Row, Col} from "react-materialize";
+import "./style.css"
+import Scores from "../Scores"
 
 function Nav(props) {
 return(
-<Navbar brand='Memory Game' right fixed={props.fixed}>
-{/* <NavItem href='components.html'>Components</NavItem>
-<NavItem onClick={() => console.log('test click')}>Getting started</NavItem> */}
-<span>Here is your score</span>
-</Navbar>
+ 
+ 
+<div className="nav">
+<nav>
+<Row>
+    <Col s={4}>
+        <h5 className="text">Memory Game</h5>
+    </Col>
+    <Col s={4}>
+        <span className="text">{props.guess}</span>
+    </Col>
+    <Col s={4}>
+        <span className="text"><Scores score={props.score} topScore={props.topScore}/></span>
+    </Col>
+</Row>
+</nav>
+</div>
     );
 }
 
