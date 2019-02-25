@@ -1,4 +1,8 @@
 .headCard {
-    background-image: url(../../images/pink_rice.png);
-    /* background: violet; */
+    /* background-image: url(../../images/pink_rice.png); */
+    background: #393e46;
+    color: #fff4e0;
+    text-align: center;
+    /* position: absolute;
+    top: 60px; */
 }

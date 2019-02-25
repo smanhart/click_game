@@ -15,7 +15,8 @@ class App extends Component {
     score: 0,
     topScore: 0,
     clickedId: [],
-    guess: "Click an image to begin"
+    guess: "Click an image to begin",
+    cardClasses: "clickCard hvr-grow-shadow"
   };
 
   randomizeCards = () => {
@@ -46,11 +47,13 @@ class App extends Component {
 
     if(this.state.clickedId.includes(id)) {
       this.setState({guess: "You guessed incorrectly!"})
+      this.setState({cardClasses: "clickCard hvr-grow-shadow vibrate-3"})
       this.setState({score: 0})
       this.setState({clickedId: []})
     } else {
       this.saveId(id)
       this.setState({guess: "You guessed correctly!"})
+      this.setState({cardClasses: "clickCard hvr-grow-shadow"})
       this.setState({score: this.state.score + 1})
       this.setState({topScore: (this.state.topScore > this.state.score ? this.state.topScore : this.state.score + 1)})
 
@@ -73,7 +76,7 @@ class App extends Component {
               image={image.image}
               randomizeCards={this.randomizeCards}
               renderScore={this.renderScore}
-              
+              cardClasses={this.state.cardClasses}
             />
           ))
           

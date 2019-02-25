@@ -14,7 +14,7 @@ function Header(props) {
                     {/* <img src={props.image} /> */}
                     <div className="container">
                         <h1>Memory Click Game</h1>
-                        <h4>Click on an image to earn points, but don't forget what you've clicked. If you click an image a second time, you lose your points and have to start again.</h4>
+                        <h5>Click on an image to earn points, but don't forget what you've clicked. If you click an image a second time, you'll lose your points and have to start again.</h5>
                     </div>
                 </Col>
             </Row>
